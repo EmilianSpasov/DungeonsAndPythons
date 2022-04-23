@@ -1,0 +1,2 @@
+EMOJI="emoji"
+SYMBOLIC="symbolic"

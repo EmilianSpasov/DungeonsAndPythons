@@ -1,0 +1,13 @@
+==================================================
+How to play the game:
+
+1.Use arrow keys or W, A, S, D buttons to move your character on the map
+
+2.Use special commands to view information:
+
+'h' - will display the help message
+'c' - will display info about your character
+'k' - will display map keys
+'l' - will display dungeon lore
+'p' - will display credits
+==================================================
