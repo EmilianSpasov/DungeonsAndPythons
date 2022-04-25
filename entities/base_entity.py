@@ -53,6 +53,7 @@ class BaseEntity(ABC, VerificationMixin):
         self.verify_number_value(mana_points)
         self.mana += mana_points
         self.mana = self.verify_if_more_than_max(self.mana, self.MAX_MANA)
+        return True
 
     def reduce_mana(self):
         self.mana -= self.spell.mana_cost
@@ -61,8 +62,10 @@ class BaseEntity(ABC, VerificationMixin):
         print(f'\nYour weapon [name,damage]: [{self.weapon.name}, {self.weapon.damage}]')
         print(f'New weapon [name,damage]: [{weapon.name}, {weapon.damage}]')
         choice = input('Do you want to equip this weapon? (yes/no) ')
-        if choice == 'yes':
+        if choice == 'yes' or choice == 'y':
             self.weapon = weapon
+            return True
+        return False
 
     def learn(self, spell: Spell = None):
         print(
@@ -74,8 +77,11 @@ class BaseEntity(ABC, VerificationMixin):
             f' [{spell.name}, {spell.damage}, {spell.mana_cost}, {spell.cast_range}]'
         )
         choice = input('Do you want to equip this spell? (yes/no) ')
-        if choice == 'yes':
+        if choice == 'yes' or choice == 'y':
             self.spell = spell
+            return True
+        
+        return False
 
     @abstractmethod
     def attack(self):

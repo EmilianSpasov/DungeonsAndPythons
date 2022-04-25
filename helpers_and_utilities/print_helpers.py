@@ -15,8 +15,6 @@ def print_entity_name_and_health(entity_name, health):
 
 def print_collect_treasure(treasure):
     print(f'\nYou collected {treasure}')
-    input('\nPress Enter to continue... ')
-
 
 def print_has_been_slain(entity_message):
     print(f'{entity_message} has been slain')

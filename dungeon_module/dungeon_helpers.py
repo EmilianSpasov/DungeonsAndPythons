@@ -136,8 +136,11 @@ def collect_treasure(hero: Hero):
     treasure = random.choice(TYPES_OF_TREASURES)
     treasure_value = generate_random_value_of_treasure(treasure)
 
-    dict_add_treasure[treasure](treasure_value)
-    print_collect_treasure(treasure)
+    result = dict_add_treasure[treasure](treasure_value)
+    if result:
+        print_collect_treasure(treasure)
+    input('\nPress Enter to continue... ')
+
 
 
 def generate_random_value_of_treasure(treasure: str):
