@@ -19,10 +19,10 @@ __all__ = ['read_file',
            ]
 
 
-def read_file(file_path: str, map_transform):
+def read_file(file_path: str, map_transform=None):
     with open(file_path, 'r') as f:
         content = f.readlines()
-    dungeon_map = [[map_transform[char] for char in line.strip()] for line in content]
+    dungeon_map = [[map_transform[char] if map_transform is not None else char for char in line.strip()] for line in content]
     return dungeon_map
 
 

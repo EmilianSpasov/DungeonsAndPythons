@@ -11,20 +11,23 @@ class MyTestCase(unittest.TestCase):
         res = None
         exp = "Invalid map. No place to spawn."
         try:
-            dungeon = Dungeon('test_invalid_map.txt')
+            path_file = './unittests/test_invalid_map.txt'
+            dungeon = Dungeon(path_file)
         except Exception as e:
             res = str(e)
 
         self.assertEqual(res, exp)
 
     def test_if_update_position_works_correctly(self):
-        dungeon = Dungeon('test_valid_map.txt')
+        path_file = './unittests/test_valid_map.txt'
+        dungeon = Dungeon(path_file)
         dungeon._Dungeon__update_position(1, 1)
         self.assertEqual(dungeon.curr_row, 1)
         self.assertEqual(dungeon.curr_column, 1)
 
     def test_if_move_hero_on_the_map_works_correctly(self):
-        dungeon = Dungeon('test_valid_map.txt')
+        path_file = './unittests/test_valid_map.txt'
+        dungeon = Dungeon(path_file)
         dungeon._Dungeon__move_hero_on_the_map(1, 1)
         res = [['.', '.', '.', '.', '.', '.', '.', '.', 'S'],
                ['#', 'H', '#', '#', '.', '.', 'T', '.', 'E'],
@@ -33,7 +36,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(res, exp)
 
     def test_if_set_hero_coordinates_works_correctly(self):
-        dungeon = Dungeon('test_valid_map.txt')
+        path_file = './unittests/test_valid_map.txt'
+        dungeon = Dungeon(path_file)
         dungeon._Dungeon__set_hero_coordinates()
         exp = [['.', '.', '.', '.', '.', '.', '.', '.', 'H'],
                ['#', '#', '#', '#', '.', '.', 'T', '.', 'E'],
@@ -42,7 +46,8 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(res, exp)
 
     def test_if_respawn_hero_raises_exception(self):
-        dungeon = Dungeon('test_valid_map.txt')
+        path_file = './unittests/test_valid_map.txt'
+        dungeon = Dungeon(path_file)
         dungeon.starting_positions = []
         res = None
         exp = "Game over. No place to respawn."
@@ -54,7 +59,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_if_spawn_hero_works_correctly(self):
         hero = Hero()
-        dungeon = Dungeon('test_valid_map.txt')
+        path_file = './unittests/test_valid_map.txt'
+        dungeon = Dungeon(path_file)
         exp = [['.', '.', '.', '.', '.', '.', '.', '.', 'H'],
                ['#', '#', '#', '#', '.', '.', 'T', '.', 'E'],
                ['.', '.', '.', 'G', '.', '.', 'S', '.', 'T']]

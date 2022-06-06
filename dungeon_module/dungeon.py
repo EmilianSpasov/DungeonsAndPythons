@@ -6,7 +6,7 @@ from helpers_and_utilities.utils import clear_screen
 
 class Dungeon:
 
-    def __init__(self, file_path: str = None, display_strategy: str = "emoji"):
+    def __init__(self, file_path: str = None, display_strategy: str = "symbolic"):
         self.display_strategy = DisplayFactory.create_display_strategy(display_strategy)
 
         self.starting_positions = []

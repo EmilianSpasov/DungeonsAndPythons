@@ -1,3 +1,4 @@
+import argparse
 from entities.hero import Hero
 from dungeon_module.dungeon import Dungeon
 from helpers_and_utilities.key_input import get_key_input
@@ -8,8 +9,12 @@ from helpers_and_utilities.display_info import DisplayInfo
 dungeon_path='resources/files/level1.txt'
 
 def main():
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--display_strategy', nargs="?", default="symbolic", const="symbolic", help='Display strategy for the board') # emoji, symbolic
+    args = parser.parse_args() 
+
     hero = Hero.create_hero()
-    dungeon = Dungeon(dungeon_path, "emoji")
+    dungeon = Dungeon(dungeon_path, args.display_strategy)
     dungeon.spawn(hero)
     DisplayInfo.display_intro()
     clear_screen()

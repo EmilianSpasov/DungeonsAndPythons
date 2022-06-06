@@ -10,11 +10,12 @@ from items.weapon import Weapon
 from dungeon_module.dungeon_helpers import read_file, add_coordinates, \
     set_coordinates_for_starting_positions, move_is_legal, attack_with_spell_range, regular_fight, \
     reset_hero_attributes, reached_exit
+from entities.display.display_factory import DisplayFactory
 
 
 class TestDungeonHelpers(unittest.TestCase):
     def test_if_read_file_works_correctly(self):
-        path_file = 'test_valid_map.txt'
+        path_file = './unittests/test_valid_map.txt'
         res = read_file(path_file)
         exp = [['.', '.', '.', '.', '.', '.', '.', '.', 'S'],
                ['#', '#', '#', '#', '.', '.', 'T', '.', 'E'],
@@ -35,7 +36,7 @@ class TestDungeonHelpers(unittest.TestCase):
 
         starting_positions = []
         exp = [(0, 3), (0, 8), (2, 6)]
-        set_coordinates_for_starting_positions(dungeon_map, starting_positions)
+        set_coordinates_for_starting_positions(dungeon_map, starting_positions, "S")
         self.assertEqual(starting_positions, exp)
 
     def test_is_set_coordinates_works_if_there_are_no_starting_positions(self):
@@ -45,7 +46,7 @@ class TestDungeonHelpers(unittest.TestCase):
 
         starting_positions = []
         exp = []
-        set_coordinates_for_starting_positions(dungeon_map, starting_positions)
+        set_coordinates_for_starting_positions(dungeon_map, starting_positions, "S")
         self.assertEqual(starting_positions, exp)
 
     def test_if_move_is_legal_raises_exception_when_row_is_negative(self):
@@ -56,7 +57,7 @@ class TestDungeonHelpers(unittest.TestCase):
         res = None
         exp = "\nYou cannot go out of the map."
         try:
-            move_is_legal(dungeon_map, row, column)
+            move_is_legal(dungeon_map, DisplayFactory.create_display_strategy("symbolic"), row, column)
         except Exception as e:
             res = str(e)
 
@@ -70,7 +71,7 @@ class TestDungeonHelpers(unittest.TestCase):
         res = None
         exp = "\nYou cannot go out of the map."
         try:
-            move_is_legal(dungeon_map, row, column)
+            move_is_legal(dungeon_map, DisplayFactory.create_display_strategy("symbolic"), row, column)
         except Exception as e:
             res = str(e)
 
@@ -83,7 +84,7 @@ class TestDungeonHelpers(unittest.TestCase):
         res = None
         exp = "\nYou cannot go out of the map."
         try:
-            move_is_legal(dungeon_map, row, column)
+            move_is_legal(dungeon_map, DisplayFactory.create_display_strategy("symbolic"), row, column)
         except Exception as e:
             res = str(e)
 
@@ -97,7 +98,7 @@ class TestDungeonHelpers(unittest.TestCase):
         res = None
         exp = "\nYou cannot go out of the map."
         try:
-            move_is_legal(dungeon_map, row, column)
+            move_is_legal(dungeon_map, DisplayFactory.create_display_strategy("symbolic"), row, column)
         except Exception as e:
             res = str(e)
 
@@ -111,7 +112,7 @@ class TestDungeonHelpers(unittest.TestCase):
         res = None
         exp = "\nThere is a wall. You cannot go there."
         try:
-            move_is_legal(dungeon_map, row, column)
+            move_is_legal(dungeon_map, DisplayFactory.create_display_strategy("symbolic"), row, column)
         except Exception as e:
             res = str(e)
 
@@ -125,7 +126,7 @@ class TestDungeonHelpers(unittest.TestCase):
         res = None
         exp = "\nYou cannot enter the Spawn Zone"
         try:
-            move_is_legal(dungeon_map, row, column)
+            move_is_legal(dungeon_map, DisplayFactory.create_display_strategy("symbolic"), row, column)
         except Exception as e:
             res = str(e)
 
