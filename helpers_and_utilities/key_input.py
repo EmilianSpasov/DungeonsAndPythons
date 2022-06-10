@@ -24,11 +24,16 @@ def check_arrow_key(key, get_key):
 
 
 def get_key_input(dicts):
-    get_key = _Getch()
-    key_combination = check_arrow_key(key_combination, get_key())
     
+    get_key = _Getch()
+    key_combination = get_key()
+    key_combination = check_arrow_key(key_combination, get_key)
+    
+    print('get_key_input', key_combination)
     while not VerificationMixin.is_command_valid(dicts, key_combination):
-        key_combination = check_arrow_key(key_combination, get_key())
+        key_combination = get_key()
+        key_combination = check_arrow_key(key_combination, get_key)
+
 
     value = dicts[key_combination]
     return value
