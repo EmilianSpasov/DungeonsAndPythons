@@ -20,3 +20,11 @@ SPELL_NAMES = ('Avada Kedavra',
                'Omnia Lux'
                'Ignis Pila'
                )
+
+ENEMY_NAMES = ('Orc',
+               'Vampire',
+               'Dragon',
+               'Creeper',
+               'Zombie',
+               'Werewolf',
+               )

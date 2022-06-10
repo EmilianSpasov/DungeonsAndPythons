@@ -12,6 +12,9 @@ class Skeleton(BaseEntity):
 
     def attack(self):
         pass
+    
+    def display(self, display_type=""):
+        pass
 
 
 class TestBaseEntity(unittest.TestCase):

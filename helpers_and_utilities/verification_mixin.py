@@ -26,6 +26,7 @@ class VerificationMixin:
             dicts[type(attribute)](attribute)
 
     @staticmethod
-    def verify_command(dicts: dict, command: str):
+    def is_command_valid(dicts: dict, command: str):
         if command not in dicts.keys():
-            raise ValueError("No such command. Try again")
+            return False
+        return True

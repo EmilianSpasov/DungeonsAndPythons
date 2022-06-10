@@ -24,17 +24,12 @@ class Hero(BaseEntity, VerificationMixin):
         return f'{self.name} the {self.title}'
 
     def attack(self):
-        spell_is_more_powerful = self.spell.damage >= self.weapon.damage
-
-        if spell_is_more_powerful and self.can_cast():
-            self.reduce_mana()
-            print_attack('spell', self)
-            return self.spell.damage
-
         print_attack('weapon', self)
         return self.weapon.damage
 
     def attack_by_spell(self):
+        if self.mana < self.spell.mana_cost:
+            raise Exception("not enough mana to cast spell")
         self.reduce_mana()
         print_attack('spell', self)
         return self.spell.damage
@@ -50,3 +45,8 @@ class Hero(BaseEntity, VerificationMixin):
 
         return cls(name=name, title=title,
                    weapon=weapon, spell=spell)
+    
+    def display(self, display_type=""):
+        with open("./resources/files/hero/static.txt", 'r') as f:
+            content = f.readlines()
+        return content

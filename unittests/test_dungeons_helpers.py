@@ -5,11 +5,9 @@ sys.path.append('..')
 
 from entities.enemy import Enemy
 from entities.hero import Hero
-from items.spell import Spell
 from items.weapon import Weapon
 from dungeon_module.dungeon_helpers import read_file, add_coordinates, \
-    set_coordinates_for_starting_positions, move_is_legal, attack_with_spell_range, regular_fight, \
-    reset_hero_attributes, reached_exit
+    set_coordinates_for_starting_positions, move_is_legal, reset_hero_attributes, reached_exit
 from entities.display.display_factory import DisplayFactory
 
 
@@ -131,47 +129,6 @@ class TestDungeonHelpers(unittest.TestCase):
             res = str(e)
 
         self.assertEqual(res, exp)
-
-    def test_if_attack_with_spell_range_works_when_cast_range_is_0(self):
-        health = 1
-        hero = Hero()
-        hero.spell = Spell(cast_range=0)
-        enemy = Enemy(health=health)
-
-        attack_with_spell_range(hero, enemy)
-        self.assertEqual(enemy.health, health)
-
-    def test_if_attack_with_spell_range_works_when_enemy_is_killed_during_the_attack(self):
-        health = 1
-        hero = Hero()
-        hero.spell = Spell(damage=1, cast_range=1)
-        enemy = Enemy(health=health)
-
-        exp = 0
-
-        attack_with_spell_range(hero, enemy)
-        self.assertEqual(enemy.health, exp)
-
-    def test_if_regular_fight_works_when_enemy_is_killed_during_the_fight(self):
-        health = 1
-        hero = Hero(health=health)
-        hero.weapon = Weapon(damage=1)
-        enemy = Enemy(health=health)
-
-        exp = 0
-
-        regular_fight(hero, enemy)
-        self.assertEqual(enemy.health, exp)
-
-    def test_if_regular_fight_works_when_hero_is_killed_during_the_fight(self):
-        health = 1
-        hero = Hero(health=health)
-        enemy = Enemy(health=health, damage=1)
-
-        exp = 0
-
-        regular_fight(hero, enemy)
-        self.assertEqual(hero.health, exp)
 
     def test_if_reset_hero_attributes_works_correctly(self):
         hero = Hero()

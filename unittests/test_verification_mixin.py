@@ -60,18 +60,11 @@ class TestClassVerificationMixin(unittest.TestCase):
 
         self.assertEqual(res, exp)
 
-    def test_if_verify_command_raises_error_if_given_key_in_a_dictionary_is_not_there(self):
+    def test_if_is_command_valid_returns_false_if_given_key_in_a_dictionary_is_not_there(self):
         dicts = {'one': 1, 'two': 2}
         key = 'three'
-        err = None
 
-        try:
-            VerificationMixin.verify_command(dicts, key)
-        except Exception as exc:
-            err = exc
-
-        self.assertIsNotNone(err)
-        self.assertEqual(str(err), "No such command. Try again")
+        self.assertEqual(VerificationMixin.is_command_valid(dicts, key), False)
 
 
 if __name__ == '__main__':

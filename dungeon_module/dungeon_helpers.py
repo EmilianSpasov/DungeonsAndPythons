@@ -3,9 +3,12 @@ from resources.constants.names import WEAPON_NAMES, SPELL_NAMES
 from resources.constants.treasures import TYPES_OF_TREASURES
 from entities.enemy import Enemy
 from entities.hero import Hero
+from helpers_and_utilities.display_info import DisplayInfo
 from helpers_and_utilities.verification_mixin import VerificationMixin
-from helpers_and_utilities.print_helpers import print_hero_takes_damage, print_collect_treasure, print_has_been_slain, \
-    print_entity_name_and_health
+from helpers_and_utilities.print_helpers import print_hero_takes_damage, print_collect_treasure, print_has_been_slain
+from helpers_and_utilities.key_input import get_key_input
+from helpers_and_utilities.utils import clear_screen
+
 
 __all__ = ['read_file',
            'set_coordinates_for_starting_positions',
@@ -59,7 +62,8 @@ def apply_direction(direction: str, curr_row: int, curr_column: int):
         'right': (curr_row, curr_column + 1)
     }
 
-    VerificationMixin.verify_command(dicts, direction)
+    if not VerificationMixin.is_command_valid(dicts, direction):
+        raise ValueError('No such command')
 
     row = dicts[direction][0]
     col = dicts[direction][1]
@@ -82,48 +86,28 @@ def take_action_after_move(hero: Hero, position: str, display_strategy):
 def fight_enemy(hero: Hero):
     from entities.enemy import Enemy
     enemy = Enemy.spawn_enemy()
-    attack_with_spell_range(hero, enemy)
+    dicts = {
+        "x":  hero.attack_by_spell,
+        "y":  hero.attack,
+        "z":  exit,
+    }
 
-    if not enemy.is_alive():
-        input('\nPress Enter to continue... ')
-        return
-
-    regular_fight(hero, enemy)
-    input('\nPress Enter to continue... ')
-
-
-def attack_with_spell_range(hero: Hero, enemy: Enemy):
-    spell_attack_counter = 0
-
-    while hero.can_cast() and spell_attack_counter < hero.spell.cast_range:
-
-        enemy.take_damage(hero.attack_by_spell())
-        spell_attack_counter += 1
-
-        print_entity_name_and_health('Enemy', enemy.health)
-        if not enemy.is_alive():
-            print_has_been_slain('Enemy')
-            break
-        print(f'Enemy moves closer!')
-
-
-def regular_fight(hero: Hero, enemy: Enemy):
     while True:
-        enemy.take_damage(hero.attack())
-        print_entity_name_and_health('Enemy', enemy.health)
-
+        clear_screen()
+        DisplayInfo(hero).display_fight_information(enemy)
+        action = get_key_input(dicts)
+        enemy.take_damage(action())
+        
+        clear_screen()
+        DisplayInfo(hero).display_fight_information(enemy)
         if not enemy.is_alive():
             print_has_been_slain('Enemy')
-            break
+            return
 
         hero.take_damage(enemy.attack())
-        print_hero_takes_damage(hero, enemy)
-        print_entity_name_and_health(hero.name, hero.health)
-
         if not hero.is_alive():
             print_has_been_slain(hero.known_as())
-            break
-
+            return
 
 def collect_treasure(hero: Hero):
     dict_add_treasure = {

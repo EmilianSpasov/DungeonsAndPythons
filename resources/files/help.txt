@@ -10,4 +10,6 @@ How to play the game:
 'k' - will display map keys
 'l' - will display dungeon lore
 'p' - will display credits
+'z' - quit
+
 ==================================================

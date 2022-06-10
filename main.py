@@ -7,6 +7,22 @@ from helpers_and_utilities.print_helpers import print_ask_direction
 from helpers_and_utilities.display_info import DisplayInfo
 
 dungeon_path='resources/files/level1.txt'
+movement_dicts = {
+        '\x1b[A': 'up',
+        '\x1b[B': 'down',
+        '\x1b[C': 'right',
+        '\x1b[D': 'left',
+        'w': 'up',
+        's': 'down',
+        'a': 'left',
+        'd': 'right',
+        'h': 'help',
+        'c': 'character_info',
+        'l': 'lore',
+        'k': 'map_keys',
+        'p': 'credits',
+        'z': 'exit',
+}
 
 def main():
     parser = argparse.ArgumentParser(description='Process some integers.')
@@ -24,7 +40,7 @@ def main():
         print_ask_direction(hero)
 
         try:
-            choice = get_key_input()
+            choice = get_key_input(movement_dicts)
             check_choice(choice, dungeon)
         except Exception as e:
             print(e)

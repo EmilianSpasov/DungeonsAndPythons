@@ -86,3 +86,7 @@ class BaseEntity(ABC, VerificationMixin):
     @abstractmethod
     def attack(self):
         pass
+
+    @abstractmethod
+    def display(self, display_type=""):
+        pass

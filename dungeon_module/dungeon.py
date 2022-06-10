@@ -41,7 +41,7 @@ class Dungeon:
             return
 
         take_action_after_move(self.hero, position, self.display_strategy)
-
+        print("Battle is over")
         if not self.hero.is_alive():
             self.__respawn_hero()
             return

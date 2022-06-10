@@ -2,7 +2,7 @@ import sys
 import tty
 import termios
 from helpers_and_utilities.verification_mixin import VerificationMixin
-
+from helpers_and_utilities.utils import clear_screen
 
 class _Getch:
     def __call__(self):
@@ -23,37 +23,12 @@ def check_arrow_key(key, get_key):
     return key
 
 
-def get_key_input():
+def get_key_input(dicts):
     get_key = _Getch()
-    key_combination = get_key()
+    key_combination = check_arrow_key(key_combination, get_key())
+    
+    while not VerificationMixin.is_command_valid(dicts, key_combination):
+        key_combination = check_arrow_key(key_combination, get_key())
 
-    key_combination = check_arrow_key(key_combination, get_key)
-    dicts = {
-        '\x1b[A': 'up',
-        '\x1b[B': 'down',
-        '\x1b[C': 'right',
-        '\x1b[D': 'left',
-        'w': 'up',
-        's': 'down',
-        'a': 'left',
-        'd': 'right',
-        'h': 'help',
-        'c': 'character_info',
-        'l': 'lore',
-        'k': 'map_keys',
-        'p': 'credits'
-    }
-
-    VerificationMixin.verify_command(dicts, key_combination)
-    direction = dicts[key_combination]
-
-    return direction
-
-
-def main():
-    for i in range(0, 20):
-        print(get_key_input())
-
-
-if __name__ == '__main__':
-        main()
+    value = dicts[key_combination]
+    return value

@@ -16,7 +16,8 @@ class DisplayInfo:
                  'help': self.display_help,
                  'lore': self.display_lore,
                  'map_keys': self.display_map_keys,
-                 'credits': self.display_credits
+                 'credits': self.display_credits,
+                 'exit': exit,
                  }
 
         dicts[info_type]()
@@ -35,9 +36,29 @@ class DisplayInfo:
             f'{FORMAT_SPACES}Name: {self.hero.spell.name}\n'
             f'{FORMAT_SPACES}Damage: {self.hero.spell.damage}\n'
             f'{FORMAT_SPACES}Mana Cost: {self.hero.spell.mana_cost}\n'
-            f'{FORMAT_SPACES}Range: {self.hero.spell.cast_range}'
         )
         input('\nPress Enter to continue... ')
+    
+    def display_fight_information(self, enemy):
+        with open(f'{resources}/battle.txt', "r+") as file:
+            print(file.read())
+        
+        FORMAT_SPACES = '      '
+        print(
+            f'{FORMAT_SPACES} {self.hero.name} the {self.hero.title} {3*FORMAT_SPACES} versus {2*FORMAT_SPACES} Enemy: {enemy.name}\n\n'
+            f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}  Current health: {enemy.health}\n'
+            f'{FORMAT_SPACES} Current mana: {self.hero.mana}   {5*FORMAT_SPACES}    Damage that can deal:  {enemy.damage} \n'
+            f'{FORMAT_SPACES} Mana regeneration: {self.hero.mana_regeneration_rate}\n\n'
+            f'{FORMAT_SPACES} Current Weapon:\n'
+            f'{2*FORMAT_SPACES} Name: {self.hero.weapon.name}\n'
+            f'{2*FORMAT_SPACES} Damage: {self.hero.weapon.damage}\n\n'
+            f'{FORMAT_SPACES} Current Spell:\n'
+            f'{2*FORMAT_SPACES} Name: {self.hero.spell.name}\n'
+            f'{2*FORMAT_SPACES} Damage: {self.hero.spell.damage}\n'
+            f'{2*FORMAT_SPACES} Mana Cost: {self.hero.spell.mana_cost}\n'
+        )
+        print(f"Press 'x' to cast spell or press 'y' to for regular attack")
+        
 
     def display_credits(self):
         with open(f'{resources}/{credits_file}', 'r') as fp:
@@ -58,7 +79,8 @@ class DisplayInfo:
         with open(f'{resources}/{keys_file}', 'r') as fp:
             print(fp.read())
         input('\nPress Enter to continue... ')
-
+        
+        
     @staticmethod
     def display_intro():
         clear_screen()
