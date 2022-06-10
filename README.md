@@ -4,11 +4,11 @@ Python console application, which represents a simplified verions of the origina
 
 # Realization
 The game is divided into a few components - dungeon, entities, items, utils, resources and tests.
-Dungeon - contains all the 'business' logic - how everything interacts with the map and what happens at each move and at any position of the map.
-Entities - all of the 'characters' in the game - heroes, villians etc.
-Items - all of the usable objects in the game - weapons, spells etc.
-Resources - all of the static content for the application - .txt files, constants etc.
-Tests - unit and component tests of the more important pieces of the code.
+- Dungeon - contains all the 'business' logic - how everything interacts with the map and what happens at each move and at any position of the map.
+- Entities - all of the 'characters' in the game - heroes, villians etc.
+- Items - all of the usable objects in the game - weapons, spells etc.
+- Resources - all of the static content for the application - .txt files, constants etc.
+- Tests - unit and component tests of the more important pieces of the code.
 
 # Goal of the game and gameplay
 How to play the game:
