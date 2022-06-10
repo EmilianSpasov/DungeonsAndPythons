@@ -21,7 +21,7 @@ movement_dicts = {
         'l': 'lore',
         'k': 'map_keys',
         'p': 'credits',
-        'z': 'exit',
+        'q': 'exit',
 }
 
 def main():

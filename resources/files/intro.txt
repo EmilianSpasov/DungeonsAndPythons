@@ -4,8 +4,8 @@
 
 Welcome to the game!
 
-You, The Hero (H), will be spawned in a dungeon
-with the goal to reach the exit gate (G) alive. 
+You, The Hero (H), will be spawned at one of the spawn points (S)
+in a dungeo nwith the goal to reach the exit gate (G) alive. 
 Walking its halls (.) you will stumble 
 upon useful treasures (T) that will aid you 
 throughout your adventure.

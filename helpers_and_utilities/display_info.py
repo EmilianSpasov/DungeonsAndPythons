@@ -46,8 +46,8 @@ class DisplayInfo:
         FORMAT_SPACES = '      '
         print(
             f'{FORMAT_SPACES} {self.hero.name} the {self.hero.title} {3*FORMAT_SPACES} versus {2*FORMAT_SPACES} Enemy: {enemy.name}\n\n'
-            f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}  Current health: {enemy.health}\n'
-            f'{FORMAT_SPACES} Current mana: {self.hero.mana}   {5*FORMAT_SPACES}    Damage that can deal:  {enemy.damage} \n'
+            f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}    Current health: {enemy.health}\n'
+            f'{FORMAT_SPACES} Current mana: {self.hero.mana} {5*FORMAT_SPACES}      Damage that can deal:  {enemy.damage} \n'
             f'{FORMAT_SPACES} Mana regeneration: {self.hero.mana_regeneration_rate}\n\n'
             f'{FORMAT_SPACES} Current Weapon:\n'
             f'{2*FORMAT_SPACES} Name: {self.hero.weapon.name}\n'
@@ -57,7 +57,7 @@ class DisplayInfo:
             f'{2*FORMAT_SPACES} Damage: {self.hero.spell.damage}\n'
             f'{2*FORMAT_SPACES} Mana Cost: {self.hero.spell.mana_cost}\n'
         )
-        print(f"Press 'x' to cast spell or press 'y' to for regular attack")
+        print(f"Press 'z' for regular attack or press 'x' to cast spell")
         
 
     def display_credits(self):

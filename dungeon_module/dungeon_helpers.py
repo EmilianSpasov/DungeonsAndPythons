@@ -88,8 +88,8 @@ def fight_enemy(hero: Hero):
     enemy = Enemy.spawn_enemy()
     dicts = {
         "x":  hero.attack_by_spell,
-        "y":  hero.attack,
-        "z":  exit,
+        "z":  hero.attack,
+        "q":  exit,
     }
 
     while True:

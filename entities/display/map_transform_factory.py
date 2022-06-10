@@ -16,3 +16,16 @@ class MapTransformFactory:
             '.': display.get_path(), 
             '#': display.get_obstacle(),  
         }
+    
+    @staticmethod
+    def create_intro_transform(transform_type=SYMBOLIC):
+        display = DisplayFactory.create_display_strategy(transform_type)
+        return {
+            '(H)': display.get_hero(),
+            '(E)': display.get_enemy(),
+            '(T)': display.get_treasure(), 
+            '(G)': display.get_goal(),
+            '(S)': display.get_spawn(),
+            '(.)': display.get_path(), 
+            '(#)': display.get_obstacle(),  
+        }
