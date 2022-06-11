@@ -45,8 +45,3 @@ class Hero(BaseEntity, VerificationMixin):
 
         return cls(name=name, title=title,
                    weapon=weapon, spell=spell)
-    
-    def display(self, display_type=""):
-        with open("./resources/files/hero/static.txt", 'r') as f:
-            content = f.readlines()
-        return content

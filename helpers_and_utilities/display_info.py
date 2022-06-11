@@ -47,17 +47,20 @@ class DisplayInfo:
         print(
             f'{FORMAT_SPACES} {self.hero.name} the {self.hero.title} {3*FORMAT_SPACES} versus {2*FORMAT_SPACES} Enemy: {enemy.name}\n\n'
             f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}    Current health: {enemy.health}\n'
-            f'{FORMAT_SPACES} Current mana: {self.hero.mana} {5*FORMAT_SPACES}      Damage that can deal:  {enemy.damage} \n'
-            f'{FORMAT_SPACES} Mana regeneration: {self.hero.mana_regeneration_rate}\n\n'
-            f'{FORMAT_SPACES} Current Weapon:\n'
-            f'{2*FORMAT_SPACES} Name: {self.hero.weapon.name}\n'
-            f'{2*FORMAT_SPACES} Damage: {self.hero.weapon.damage}\n\n'
+            f'{FORMAT_SPACES} Current mana: {self.hero.mana}\n'
+            f'{FORMAT_SPACES} Mana regeneration: {self.hero.mana_regeneration_rate} {5*FORMAT_SPACES}   Regular attack damage:  {enemy.damage}\n\n'
+            f'{FORMAT_SPACES} Current Weapon: {5*FORMAT_SPACES}        Current Spell:\n'
+            f'{2*FORMAT_SPACES} Name: {self.hero.weapon.name}  {6*FORMAT_SPACES}  Name: {enemy.spell.name}\n'
+            f'{2*FORMAT_SPACES} Damage: {self.hero.weapon.damage}   {6*FORMAT_SPACES}     Damage: {self.hero.spell.damage}\n\n'
             f'{FORMAT_SPACES} Current Spell:\n'
             f'{2*FORMAT_SPACES} Name: {self.hero.spell.name}\n'
             f'{2*FORMAT_SPACES} Damage: {self.hero.spell.damage}\n'
             f'{2*FORMAT_SPACES} Mana Cost: {self.hero.spell.mana_cost}\n'
         )
-        print(f"Press 'z' for regular attack or press 'x' to cast spell")
+        print(f'''Press:
+                'z' for regular attack
+                'x' to cast spell
+                'q' to quit''')
         
 
     def display_credits(self):
