@@ -17,7 +17,7 @@ def print_collect_treasure(treasure):
     print(f'\nYou collected {treasure}')
 
 def print_has_been_slain(entity_message):
-    print(f'{entity_message} has been slain')
+    input(f'\n{entity_message} has been slain')
 
 
 def print_ask_direction(hero):
