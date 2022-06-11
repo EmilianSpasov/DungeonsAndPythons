@@ -1,11 +1,11 @@
 =======================================
 
-'.' - corridor        '#' - wall
+(.) - corridor        (#) - wall
 
-'H' - Hero            'S' - Spawn point
+(H) - Hero            (S) - Spawn point
 
-'E' - Enemy           'T' - Treasure
+(E) - Enemy           (T) - Treasure
 
-            'G' - Gate
+            (G) - Gate
 
 =======================================

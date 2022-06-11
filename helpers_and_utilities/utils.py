@@ -1,3 +1,5 @@
+from entities.display.constants import SYMBOLIC
+
 def clear_screen():
     print("\033c", end="")
 
@@ -7,14 +9,14 @@ def is_direction(choice):
     return choice in directions
 
 
-def check_choice(choice, dungeon):
+def check_choice(choice, dungeon, display=SYMBOLIC):
     from helpers_and_utilities.display_info import DisplayInfo
     if is_direction(choice):
         dungeon.move_hero(choice)
         return
 
     clear_screen()
-    display_info = DisplayInfo(dungeon.hero)
+    display_info = DisplayInfo(dungeon.hero, display)
     display_info.display_info(choice)
 
 

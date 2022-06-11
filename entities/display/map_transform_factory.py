@@ -1,6 +1,4 @@
-from entities.display.constants import SYMBOLIC, EMOJI
-from entities.display.emoji import EmojiDisplay
-from entities.display.symbolic import SymbolicDisplay
+from entities.display.constants import SYMBOLIC
 from entities.display.display_factory import DisplayFactory
 
 class MapTransformFactory:
@@ -18,7 +16,7 @@ class MapTransformFactory:
         }
     
     @staticmethod
-    def create_intro_transform(transform_type=SYMBOLIC):
+    def create_file_transform(transform_type=SYMBOLIC):
         display = DisplayFactory.create_display_strategy(transform_type)
         return {
             '(H)': display.get_hero(),

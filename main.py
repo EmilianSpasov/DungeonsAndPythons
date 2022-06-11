@@ -32,7 +32,7 @@ def main():
     hero = Hero.create_hero()
     dungeon = Dungeon(dungeon_path, args.display_strategy)
     dungeon.spawn(hero)
-    DisplayInfo.display_intro()
+    DisplayInfo.display_intro(args.display_strategy)
     clear_screen()
 
     while not end_game(dungeon, dungeon.display_strategy.get_goal()) and dungeon.hero.is_alive():
@@ -41,7 +41,7 @@ def main():
 
         try:
             choice = get_key_input(movement_dicts)
-            check_choice(choice, dungeon)
+            check_choice(choice, dungeon, args.display_strategy)
         except Exception as e:
             print(e)
             input('\nPress Enter to continue...')

@@ -1,4 +1,6 @@
 from helpers_and_utilities.utils import clear_screen
+from entities.display.map_transform_factory import MapTransformFactory
+from entities.display.constants import SYMBOLIC
 
 resources = 'resources/files'
 credits_file = 'credits.txt'
@@ -8,8 +10,9 @@ keys_file = 'map_keys.txt'
 intro_file = 'intro.txt'
 
 class DisplayInfo:
-    def __init__(self, hero):
+    def __init__(self, hero, display_type=SYMBOLIC):
         self.hero = hero
+        self.display_type = display_type
 
     def display_info(self, info_type):
         dicts = {'character_info': self.display_hero_information,
@@ -80,13 +83,19 @@ class DisplayInfo:
 
     def display_map_keys(self):
         with open(f'{resources}/{keys_file}', 'r') as fp:
-            print(fp.read())
+            map_keys = fp.read()
+            for key, val in MapTransformFactory.create_file_transform(self.display_type).items(): 
+                map_keys = map_keys.replace(key, val)
+            print(map_keys)
         input('\nPress Enter to continue... ')
         
         
     @staticmethod
-    def display_intro():
+    def display_intro(display_type=SYMBOLIC):
         clear_screen()
         with open(f'{resources}/{intro_file}', 'r') as fp:
-            print(fp.read())
+            intro = fp.read()
+            for key, val in MapTransformFactory.create_file_transform(display_type).items(): 
+                intro = intro.replace(key, val)
+            print(intro)
         input('\nPress Enter to continue... ')
