@@ -52,4 +52,4 @@ I added a bunch of tests to assure the best functionality of the application. Al
 
 # Documentation 
 
-You can find more documentation and presentation of the project [here](resources/doucmentation).
+You can find more documentation and presentation of the project [here](resources/doucmentation/).
