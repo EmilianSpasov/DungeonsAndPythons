@@ -49,3 +49,7 @@ The goal of the game is to reach the exit of the dungeon. (More information [her
 
 # Tests and CI/CD
 I added a bunch of tests to assure the best functionality of the application. Also created a small CI/CD with GitHub actions for automated testing (no deployment for now).
+
+# Documentation 
+
+You can find more documentation and presentation of the project [here](resources/doucmentation).

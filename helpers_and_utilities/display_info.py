@@ -50,7 +50,7 @@ class DisplayInfo:
         print(
             f'{FORMAT_SPACES} {self.hero.name} the {self.hero.title} {3*FORMAT_SPACES} versus {2*FORMAT_SPACES} Enemy: {enemy.name}\n\n'
             f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}    {" " if self.hero.health < 100 else ""}Current health: {enemy.health}\n'
-            f'{FORMAT_SPACES} Current mana: {self.hero.mana} {5*FORMAT_SPACES}      {" " if self.hero.mana < 10 else ""}Regular Attack Damage:  {enemy.damage}\n'
+            f'{FORMAT_SPACES} Current mana: {self.hero.mana} {5*FORMAT_SPACES}      {" " if self.hero.mana < 100 else ""}Regular Attack Damage:  {enemy.damage}\n'
             f'{FORMAT_SPACES} Mana regeneration: {self.hero.mana_regeneration_rate} {5*FORMAT_SPACES}   Spell Damage: {enemy.spell.damage} \n\n'
             f'{FORMAT_SPACES} Current Weapon:\n'
             f'{2*FORMAT_SPACES} Name: {self.hero.weapon.name}\n'
