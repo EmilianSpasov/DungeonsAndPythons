@@ -1,6 +1,6 @@
 from helpers_and_utilities.utils import clear_screen
-from entities.display.map_transform_factory import MapTransformFactory
-from entities.display.constants import SYMBOLIC
+from helpers_and_utilities.display.map_transform_factory import MapTransformFactory
+from helpers_and_utilities.display.constants import SYMBOLIC
 
 resources = 'resources/files'
 credits_file = 'credits.txt'
@@ -48,9 +48,9 @@ class DisplayInfo:
         
         FORMAT_SPACES = '      '
         print(
-            f'{FORMAT_SPACES} {self.hero.name} the {self.hero.title} {3*FORMAT_SPACES} versus {2*FORMAT_SPACES} Enemy: {enemy.name}\n\n'
-            f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}    {" " if self.hero.health < 100 else ""}Current health: {enemy.health}\n'
-            f'{FORMAT_SPACES} Current mana: {self.hero.mana} {5*FORMAT_SPACES}      {" " if self.hero.mana < 100 else ""}Regular Attack Damage:  {enemy.damage}\n'
+            f'{FORMAT_SPACES} {self.hero.known_as()} {3*FORMAT_SPACES} versus {self.display_spaces_before_enemy_name(self.hero.known_as())}Enemy: {enemy.name}\n\n'
+            f'{FORMAT_SPACES} Current health: {self.hero.health} {5*FORMAT_SPACES}    {self.display_spaces_after_numerical_value(self.hero.health)}Current health: {enemy.health}\n'
+            f'{FORMAT_SPACES} Current mana: {self.hero.mana} {5*FORMAT_SPACES}      {self.display_spaces_after_numerical_value(self.hero.mana)}Regular Attack Damage:  {enemy.damage}\n'
             f'{FORMAT_SPACES} Mana regeneration: {self.hero.mana_regeneration_rate} {5*FORMAT_SPACES}   Spell Damage: {enemy.spell.damage} \n\n'
             f'{FORMAT_SPACES} Current Weapon:\n'
             f'{2*FORMAT_SPACES} Name: {self.hero.weapon.name}\n'
@@ -99,3 +99,13 @@ class DisplayInfo:
                 intro = intro.replace(key, val)
             print(intro)
         input('\nPress Enter to continue... ')
+
+    def display_spaces_after_numerical_value(self, value):
+        if value < 10:
+            return " " * 2
+        elif value >= 10 and value < 100:
+            return " "
+        return ""
+
+    def display_spaces_before_enemy_name(self, value):
+        return " " * (27 - len(value))

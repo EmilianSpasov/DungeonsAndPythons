@@ -1,5 +1,5 @@
-from entities.display.constants import SYMBOLIC
-from entities.display.display_factory import DisplayFactory
+from helpers_and_utilities.display.constants import SYMBOLIC
+from helpers_and_utilities.display.display_factory import DisplayFactory
 
 class MapTransformFactory:
     @staticmethod

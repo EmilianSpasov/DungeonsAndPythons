@@ -1,4 +1,4 @@
-from entities.display.base import BaseDisplay
+from helpers_and_utilities.display.base import BaseDisplay
 
 class SymbolicDisplay(BaseDisplay):
     def get_hero(self):

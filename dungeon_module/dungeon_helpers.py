@@ -105,6 +105,9 @@ def fight_enemy(hero: Hero):
             return
 
         hero.take_damage(enemy.attack())
+        
+        clear_screen()
+        DisplayInfo(hero).display_fight_information(enemy)
         if not hero.is_alive():
             print_has_been_slain(hero.known_as())
             return

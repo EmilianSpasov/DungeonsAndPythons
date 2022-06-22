@@ -8,7 +8,7 @@ from entities.hero import Hero
 from items.weapon import Weapon
 from dungeon_module.dungeon_helpers import read_file, add_coordinates, \
     set_coordinates_for_starting_positions, move_is_legal, reset_hero_attributes, reached_exit
-from entities.display.display_factory import DisplayFactory
+from helpers_and_utilities.display.display_factory import DisplayFactory
 
 
 class TestDungeonHelpers(unittest.TestCase):

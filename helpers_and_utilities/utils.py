@@ -1,4 +1,4 @@
-from entities.display.constants import SYMBOLIC
+from helpers_and_utilities.display.constants import SYMBOLIC
 
 def clear_screen():
     print("\033c", end="")

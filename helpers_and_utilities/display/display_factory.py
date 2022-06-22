@@ -1,6 +1,6 @@
-from entities.display.emoji import EmojiDisplay
-from entities.display.symbolic import SymbolicDisplay
-from entities.display.constants import SYMBOLIC, EMOJI
+from helpers_and_utilities.display.emoji import EmojiDisplay
+from helpers_and_utilities.display.symbolic import SymbolicDisplay
+from helpers_and_utilities.display.constants import SYMBOLIC, EMOJI
 
 class DisplayFactory:
     @staticmethod

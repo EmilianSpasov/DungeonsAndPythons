@@ -1,7 +1,7 @@
 from dungeon_module.dungeon_helpers import *
 from entities.hero import Hero
-from entities.display.display_factory import DisplayFactory
-from entities.display.map_transform_factory import MapTransformFactory 
+from helpers_and_utilities.display.display_factory import DisplayFactory
+from helpers_and_utilities.display.map_transform_factory import MapTransformFactory 
 from helpers_and_utilities.utils import clear_screen
 
 class Dungeon:
